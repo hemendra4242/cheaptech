@@ -3,7 +3,7 @@
 <html lang="en">
 
 
-<!-- molla/category-4cols.html  22 Nov 2019 10:02:52 GMT -->
+<!-- molla/index-4.html  22 Nov 2019 09:53:08 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,36 +17,37 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/nn.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/nn.png' %}">
     <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
-    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.' %}'" color="#666666">
     <link rel="shortcut icon" href="{% static 'assets/images/icons/nn.png' %}">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css' %}">
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup/magnific-popup.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider/nouislider.css' %}">
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-        <!-- font awesome -->
-    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/jquery.countdown.css' %}">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/skins/skin-demo-4.css' %">
+    <link rel="stylesheet" href="{% static 'assets/css/demos/demo-4.css' %}">
 </head>
+{% include 'navbar.html' %}
+{% if data %}
+{% for product in data %}
 <body>
-    <div class="page-wrapper">
-        {% include 'navbar.html' %}
+<div class="page-wrapper">
         <main class="main">
         	<div class="page-header text-center" style="background-image: url({% static 'assets/images/page-header-bg.jpg' %})">
         		<div class="container">
-        			<h1 class="page-title">Category<span>{{ choice|title }}</span></h1>
+        			<h1 class="page-title">Category<span>{{ product.choice|title }}</span></h1>
         		</div><!-- End .container -->
         	</div><!-- End .page-header -->
             <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
-        {% for product in Products %}
         <div class="col-md-10">
             <div class="row p-2 bg-white border rounded">
                 <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ product.Image1.url }}"></div>
@@ -59,33 +60,19 @@
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-row align-items-center">
-                        <h4 class="mr-1">₹..{{ product.After_price }}</h4><span class="strike-text">₹..{{ product.Before_price }}</span>
+                        <h4 class="mr-1">₹..{{ product.After_price }}</h4><span class="strike-text"><del>₹..{{ product.Before_price }}</del></span>
                     </div>
                     <h6 class="text-success">Discount=({{ product.discount }}%)</h6>
                     <div class="d-flex flex-column mt-4"><a href="{{ product.get_absolute_url }}"><button class="btn btn-primary btn-sm mt-2" type="button">Details</button></a><a href="{{ product.Buy_link }}"><button class="btn btn-outline-primary btn-sm mt-2" type="button">Buy</button></a></div>
                 </div>
             </div>
         </div>
-{% endfor %}
+
 </div>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-  {% if Products.has_previous %}
-    <li class="page-item"><a class="page-link" href="?page={{Products.previous_page_number}}">Previous</a></li>
-  {% endif %}
-    <li class="page-item"><a class="page-link" href="#">{{ Products.number }}</a></li>
-  {% if Products.has_next %}
-    <li class="page-item"><a class="page-link" href="?page={{Products.next_page_number}}">Next</a></li>
-  {% endif %}
-  </ul>
-</nav>
-    </div>
 
+</div><!-- End .page-wrapper -->
+{% include 'footer.html' %}
 
-        </main><!-- End .main -->
-        {% include 'footer.html' %}
-    </div><!-- End .page-wrapper -->
-    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
     {% include 'mobnav.html' %}
     <!-- Plugins JS File -->
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
@@ -101,7 +88,13 @@
     <!-- Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
-
-
-<!-- molla/category-4cols.html  22 Nov 2019 10:02:55 GMT -->
+{% endfor %}
+{% else %}
+{% include 'index.html' %}
+{% endif %}
 </html>
+
+
+
+
+

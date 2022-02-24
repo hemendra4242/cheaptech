@@ -86,10 +86,10 @@
                                     <h1 class="product-title">{{ product.Title }}</h1><!-- End .product-title -->
 
                                     <div class="product-price">
-                                        {{ product.After_price }}
+                                        ₹..{{ product.After_price }}
                                     </div><!-- End .product-price -->
                                     <div class="product-price">
-                                        <del>{{ product.Before_price }}</del>
+                                        <del>₹..{{ product.Before_price }}</del>
                                     </div><!-- End .product-price -->
                                     <div class="product-content">
                                         <p>{{ product.Specialfeatures }} and many more features...</p>
@@ -340,7 +340,7 @@
                         <div class="product product-7 text-center">
                             <figure class="product-media">
                                 <a href="{{ prod.get_absolute_url }}">
-                                    <img src="{{ prod.Image1.url }}" alt="Product image" class="product-image">
+                                    <img src="{{ prod.Image1.url }}" alt="Product image" class="product-image" width="96" height="130">
                                 </a>
 
 
@@ -348,11 +348,11 @@
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">Women</a>
+                                    <a href="#">{{ prod.choice }}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="{{ prod.get_absolute_url }}">{{ prod.Title }}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="">{{ prod.Title }}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
-                                    Rs..{{ prod.After_price }}
+                                    ₹..{{ prod.After_price }}
                                 </div><!-- End .product-price -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->

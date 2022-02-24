@@ -18,9 +18,10 @@ def navsearch(request):
         if 'q' in request.GET:
             q = request.GET.get('q')
             data = Product.objects.filter(Title__icontains=q).order_by('-id')
+            return render(request, 'searchbar.html', {'data':data})
         else:
-            data = Product.objects.all().order_by('id')
-    return render(request, 'navbar.html', {'data':data})
+            return render(request, 'searchbar.html')
+
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']

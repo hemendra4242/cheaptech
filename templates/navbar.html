@@ -63,7 +63,7 @@
                     <div class="header-center">
                         <div class="header-search header-search-extended header-search-visible header-search-no-round">
                             <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                            <form action="navsearch" method="get">
+                            <form action="{% url 'navsearch' %}" method="get">
                                 <div class="header-search-wrapper search-wrapper-wide">
                                     <label for="q" class="sr-only">Search</label>
                                     <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
@@ -190,44 +190,6 @@
                 </div><!-- End .container -->
             </div><!-- End .header-bottom -->
         </header><!-- End .header -->
-
-{% if data %}
-{% for product in data %}
-<body>
-<div class="page-wrapper">
-        <main class="main">
-        	<div class="page-header text-center" style="background-image: url({% static 'assets/images/page-header-bg.jpg' %})">
-        		<div class="container">
-        			<h1 class="page-title">Category<span>{{ product.choice|title }}</span></h1>
-        		</div><!-- End .container -->
-        	</div><!-- End .page-header -->
-            <div class="container mt-5 mb-5">
-            <div class="d-flex justify-content-center row">
-        <div class="col-md-10">
-            <div class="row p-2 bg-white border rounded">
-                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ product.Image1.url }}"></div>
-                <div class="col-md-6 mt-1">
-                    <h5>{{ product.Title }}</h5>
-                    <div class="mt-1 mb-1 spec-1"><span></span><span class="dot"></span><span>{{ product.Colour }}</span><span class="dot"></span><span>{{ product.Brand }}<br></span></div>
-                    <div class="mt-1 mb-1 spec-1"><span>{{ product.Dateofpublished|date:"F, jS, Y" }}</span><span class="dot"></span><span>{{ product.Buy_link }}</span><span>
-                    <br></span></div>
-                    <p class="text-justify text-truncate para mb-0">{{ product.Description1|truncatechars:16 }}<br><br></p>
-                </div>
-                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                    <div class="d-flex flex-row align-items-center">
-                        <h4 class="mr-1">{{ product.After_price }}</h4><span class="strike-text"><del>{{ product.Before_price }}</del></span>
-                    </div>
-                    <h6 class="text-success">Discount=({{ product.discount }}%)</h6>
-                    <div class="d-flex flex-column mt-4"><a href="{{ product.get_absolute_url }}"><button class="btn btn-primary btn-sm mt-2" type="button">Details</button></a><a href="{{ product.Buy_link }}"><button class="btn btn-outline-primary btn-sm mt-2" type="button">Buy</button></a></div>
-                </div>
-            </div>
-        </div>
-
-</div>
-</div><!-- End .page-wrapper -->
-{% include 'footer.html' %}
-
-    {% include 'mobnav.html' %}
     <!-- Plugins JS File -->
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
@@ -241,9 +203,9 @@
     <script src="{% static 'assets/js/nouislider.min.js' %}"></script>
     <!-- Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
-</body>
-{% empty %}
-<h3>No data found</h3>
-{% endfor %}
-{% endif %}
 </html>
+
+
+
+
+
