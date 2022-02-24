@@ -191,7 +191,7 @@
             </div><!-- End .header-bottom -->
         </header><!-- End .header -->
 
-
+{% if data %}
 {% for product in data %}
 <body>
 <div class="page-wrapper">
@@ -245,4 +245,5 @@
 {% empty %}
 <h3>No data found</h3>
 {% endfor %}
+{% endif %}
 </html>
