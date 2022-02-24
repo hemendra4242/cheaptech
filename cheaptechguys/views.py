@@ -13,7 +13,14 @@ from datetime import datetime
 def Home(request):
     return render(request, 'index-4.html')
     
-
+def navsearch(request):
+    if request.method == 'GET':
+        if 'q' in request.GET:
+            q = request.GET.get('q')
+            data = Product.objects.filter(Title__icontains=q).order_by('-id')
+        else:
+            data = Product.objects.all().order_by('id')
+    return render(request, 'navbar.html', {'data':data})
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
