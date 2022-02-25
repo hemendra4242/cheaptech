@@ -37,8 +37,8 @@
 </head>
 {% include 'navbar.html' %}
 {% if data %}
-{% for product in data %}
 <body>
+{% for product in data %}
 <div class="page-wrapper">
         <main class="main">
         	<div class="page-header text-center" style="background-image: url({% static 'assets/images/page-header-bg.jpg' %})">
@@ -67,9 +67,8 @@
                 </div>
             </div>
         </div>
-{% endfor %}
 </div>
-
+{% endfor %}
 </div><!-- End .page-wrapper -->
 {% include 'footer.html' %}
 
