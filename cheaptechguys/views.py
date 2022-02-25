@@ -7,12 +7,13 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from .forms import Userform, ContactForm
+from django.contrib.auth.decorators import login_required
 from .models import Product
 from datetime import datetime
 
 def Home(request):
     return render(request, 'index-4.html')
-    
+@login_required(login_url='/register')
 def navsearch(request):
     if request.method == 'GET':
         if 'q' in request.GET:
@@ -50,6 +51,7 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
 def product_list(request, choice):
     Produc = Product.objects.filter(choice=choice)
     paginator = Paginator(Produc, 5)
@@ -57,6 +59,7 @@ def product_list(request, choice):
     page_obj = paginator.get_page(page_number)
     context = {'Products':page_obj, 'choice':choice}
     return render(request, 'category-list.html', context)
+@login_required(login_url='register')
 def product_page(request, name):
     product = Product.objects.get(Title=name)
     pro = Product.objects.filter(choice=product.choice)
