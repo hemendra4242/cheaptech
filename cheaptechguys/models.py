@@ -8,7 +8,7 @@ class Product(models.Model):
     Image3 = models.FileField(null=True)
     Image4 = models.FileField(null=True)
     Image5 = models.FileField(null=True)
-    Before_price = models.FloatField()
+    Before_price = models.CharField(max_length=200)
     After_price = models.CharField(max_length=200)
     discount = models.CharField(max_length=200)
     Choices = (
