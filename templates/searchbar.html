@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-
+{% endfor %}
 </div>
 
 </div><!-- End .page-wrapper -->
@@ -88,7 +88,7 @@
     <!-- Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
-{% endfor %}
+
 {% else %}
 {% include 'index.html' %}
 {% endif %}
