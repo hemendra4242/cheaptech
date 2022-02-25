@@ -36,16 +36,11 @@
     <link rel="stylesheet" href="{% static 'assets/css/demos/demo-4.css' %}">
 </head>
 {% include 'navbar.html' %}
-{% if data %}
 <body>
-{% for product in data %}
 <div class="page-wrapper">
+{% if data %}
+{% for product in data %}
         <main class="main">
-        	<div class="page-header text-center" style="background-image: url({% static 'assets/images/page-header-bg.jpg' %})">
-        		<div class="container">
-        			<h1 class="page-title">Category<span>{{ product.choice|title }}</span></h1>
-        		</div><!-- End .container -->
-        	</div><!-- End .page-header -->
             <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
         <div class="col-md-10">
@@ -69,10 +64,13 @@
         </div>
 </div>
 {% endfor %}
+{% else %}
+{% include 'index.html' %}
+{% endif %}
 </div><!-- End .page-wrapper -->
-{% include 'footer.html' %}
 
-    {% include 'mobnav.html' %}
+{% include 'footer.html' %}
+{% include 'mobnav.html' %}
     <!-- Plugins JS File -->
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
@@ -88,9 +86,6 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 
-{% else %}
-{% include 'index.html' %}
-{% endif %}
 </html>
 
 
