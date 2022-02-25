@@ -59,7 +59,7 @@
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-row align-items-center">
-                        <h4 class="mr-1">₹    {{ product.After_price }}</h4><span class="strike-text">₹    {{ product.Before_price }}</span>
+                        <h4 class="mr-1">{{ product.After_price }}</h4><span class="strike-text">{{ product.Before_price }}</span>
                     </div>
                     <h6 class="text-success">Discount=({{ product.discount }}%)</h6>
                     <div class="d-flex flex-column mt-4"><a href="{{ product.get_absolute_url }}"><button class="btn btn-primary btn-sm mt-2" type="button">Details</button></a><a href="{{ product.Buy_link }}"><button class="btn btn-outline-primary btn-sm mt-2" type="button">Buy</button></a></div>
